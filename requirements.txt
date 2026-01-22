@@ -1,0 +1,7 @@
+click==8.1.7
+SQLAlchemy==2.0.22
+pandas==2.2.2
+PyYAML==6.0
+snowflake-connector-python==3.0.0
+snowflake-sqlalchemy==1.4.9
+tqdm==4.66.1

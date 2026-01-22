@@ -1,0 +1,22 @@
+# Example config for migrating one or more sources
+# Provide either source_url (SQLAlchemy URL) or individual source parts.
+# source_query can be a SELECT query or optional; if omitted, `table` will be read via read_sql_table
+sources:
+  - name: my_table_migration
+    source_url: "postgresql+psycopg2://user:password@host:5432/source_db"
+    # You can use either source_query OR table (table will use SELECT * FROM <table>)
+    source_query: "SELECT id, name, created_at FROM public.users WHERE is_active = true"
+    # table: public.users
+    chunk_size: 50000
+    # destination table in snowflake
+    dest_table: users
+    mode: append  # append or replace
+
+snowflake:
+  user: "SF_USER"
+  password: "SF_PASSWORD"
+  account: "xy12345.east-us-2.azure"
+  warehouse: "COMPUTE_WH"
+  database: "TARGET_DB"
+  schema: "PUBLIC"
+  role: "SYSADMIN"
